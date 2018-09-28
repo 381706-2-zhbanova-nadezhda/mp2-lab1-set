@@ -2,6 +2,10 @@
 
 #include <gtest.h>
 
+TEST(TSet, test)
+{
+  EXPECT_EQ(3, 3);
+}
 TEST(TSet, can_get_max_power_set)
 {
   const int size = 5;
