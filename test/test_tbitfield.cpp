@@ -152,6 +152,15 @@ TEST(TBitField, compare_equal_bitfields_of_equal_size)
   EXPECT_EQ(bf1, bf2);
 }
 
+TEST(TBitField, compare_equal_bitfields_of_non_equal_size)
+{
+  const int size1 = 2, size2 = 4;
+
+  TBitField bf1(size1), bf2(size2);
+
+  EXPECT_NE(bf1, bf2);
+}
+
 TEST(TBitField, or_operator_applied_to_bitfields_of_equal_size)
 {
   const int size = 4;
@@ -240,7 +249,7 @@ TEST(TBitField, can_invert_bitfield)
 
 TEST(TBitField, can_invert_large_bitfield)
 {
-  const int size = 38;
+  const int size = 3800;
   TBitField bf(size), negBf(size), expNegBf(size);
   bf.SetBit(35);
   negBf = ~bf;

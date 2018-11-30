@@ -2,10 +2,6 @@
 
 #include <gtest.h>
 
-TEST(TSet, test)
-{
-  EXPECT_EQ(3, 3);
-}
 TEST(TSet, can_get_max_power_set)
 {
   const int size = 5;
@@ -298,4 +294,33 @@ TEST(TSet, check_negation_operator)
   expSet.InsElem(2);
 
   EXPECT_EQ(expSet, set1);
+}
+
+TEST(TSet, check_existing_element_substruction)
+{
+  const int size = 4;
+  TSet set(size), expSet(size);
+  // set = {1, 3}
+  set.InsElem(1);
+  set.InsElem(3);
+  set = set - 1;
+  // expSet = {3}
+  expSet.InsElem(3);
+
+  EXPECT_EQ(expSet, set);
+}
+
+TEST(TSet, check_non_existing_element_substruction)
+{
+  const int size = 4;
+  TSet set(size), expSet(size);
+  // set = {1, 3}
+  set.InsElem(1);
+  set.InsElem(3);
+  set = set - 0;
+  // expSet = {1, 3}
+  expSet.InsElem(1);
+  expSet.InsElem(3);
+
+  EXPECT_EQ(expSet, set);
 }
